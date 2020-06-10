@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/holo/Desktop/cpp_py/bezier_curve.cpp
+/home/holo/Desktop/cpp_py/bezier_curve.h
+-
+/home/holo/Desktop/cpp_py/bezier_curve.hpp
+-
+boost/python.hpp
+-
+boost/python/def.hpp
+-
+boost/python/module.hpp
+-
+boost/python/stl_iterator.hpp
+-
+boost/python/suite/indexing/vector_indexing_suite.hpp
+-
+
+/home/holo/Desktop/cpp_py/bezier_curve.h
+vector
+-
+functional
+-
+
+/home/holo/Desktop/cpp_py/bezier_curve.hpp
+algorithm
+-
+cmath
+-
+functional
+-
+iostream
+-
+vector
+-
+glog/logging.h
+-
+
