@@ -15,6 +15,7 @@ namespace math {
 template<typename Point, uint DIM>
 BezierPoint<Point, DIM>::BezierPoint() {
   coordinate.resize(DIM);
+  curvature = -1.0;
 }
 
 template<typename Point, uint DIM>
@@ -25,6 +26,7 @@ BezierPoint<Point, DIM>::BezierPoint(Point coords) {
     coordinate.resize(DIM);
     LOG(ERROR) << "Wrong in Bezier Curve: invalid coords size";
   }
+  curvature = -1.0;
 }
 
 template<typename Point, uint DIM>
@@ -32,10 +34,8 @@ BezierPoint<Point, DIM>::BezierPoint(Point coords, float curvature_in) {
   curvature = curvature_in;
   if (coords.size() == DIM) {
     coordinate = coords;
-    curvature = curvature_in;
   } else {
     coordinate.resize(DIM);
-    curvature = curvature_in;
     LOG(ERROR) << "Wrong in Bezier Curve: invalid coords size";
   }
 }
@@ -52,6 +52,12 @@ bool BezierPoint<Point, DIM>::operator != (BezierPoint const& t) const {
 
 // Beizer
 template<typename Point, uint DIM>
+Bezier<Point, DIM>::Bezier() {
+  dimension_ = DIM;
+  order_ = 0;
+}
+
+template<typename Point, uint DIM>
 Bezier<Point, DIM>::Bezier(uint curve_order) {
   dimension_ = DIM;
   SetOrder(curve_order);
@@ -62,7 +68,8 @@ Bezier<Point, DIM>::~Bezier() {}
 
 template<typename Point, uint DIM>
 void Bezier<Point, DIM>::SetOrder(uint curve_order) {
-  if (curve_order > 5) {
+  if (curve_order > 5 || curve_order < 1) {
+    order_ = 0;
     LOG(ERROR) << "Wrong in Bezier Curve: Currently only support up to 5th order Bezier Curve";
     return;
   }
@@ -282,8 +289,6 @@ void Bezier<Point, DIM>::PtsOnCurve(std::vector<BezierPoint<Point, DIM>>& curve_
                       std::pow((deriv_1[2] * deriv_2[0] - deriv_1[0] * deriv_2[2]), 2) +
                       std::pow((deriv_1[0] * deriv_2[1] - deriv_1[1] * deriv_2[0]), 2);
       norm_square = std::pow(deriv_1[0], 2) + std::pow(deriv_1[1], 2) + std::pow(deriv_1[2], 2);
-    } else {
-      LOG(ERROR) << "Wrong in Bezier Curve: Wrong dimension.";
     }
     curve_points[i].curvature = cross_product / std::pow(norm_square, 1.5);
   }

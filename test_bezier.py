@@ -33,7 +33,6 @@ def TestDrawBezierCurve(order, bz_class):
     for i in range(1, order - 1):
         plt.scatter(bezier_curve[i].coordinate[0], bezier_curve[i].coordinate[1], s = 4, c='c')
 
-
 # ls_st_pt = [(line2_points[0][1] + line3_points[0][1])/2, (line2_points[0][0] + line3_points[0][0])/2]
 ls_st_pt = [0.0, 0.0]
 start_pt = BezierPoint(list_to_vector(ls_st_pt))
