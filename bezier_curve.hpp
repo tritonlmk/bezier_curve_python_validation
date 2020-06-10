@@ -1,5 +1,5 @@
-#ifndef _HOLO_PLANNING_MATH_BEZIER_CURVE_HPP_
-#define _HOLO_PLANNING_MATH_BEZIER_CURVE_HPP_
+#ifndef _MATH_BEZIER_CURVE_HPP__
+#define _MATH_BEZIER_CURVE_HPP__
 
 #include <algorithm>
 #include <cmath>
@@ -9,8 +9,6 @@
 
 #include <glog/logging.h>
 
-namespace holo {
-namespace planning {
 namespace math {
 
 // ==, !=, [], size()
@@ -292,7 +290,5 @@ void Bezier<Point, DIM>::PtsOnCurve(std::vector<BezierPoint<Point, DIM>>& curve_
 }
 
 }// namespace math
-}// namespace planning
-}// namespace holo
 
 #endif

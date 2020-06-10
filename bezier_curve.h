@@ -1,11 +1,9 @@
-#ifndef _HOLO_PLANNING_MATH_BEZIER_CURVE_H_
-#define _HOLO_PLANNING_MATH_BEZIER_CURVE_H_
+#ifndef _MATH_BEZIER_CURVE_H__
+#define _MATH_BEZIER_CURVE_H__
 
 #include <vector>
 #include <functional>
 
-namespace holo {
-namespace planning {
 namespace math {
 
 template<typename Point, uint DIM>
@@ -51,7 +49,5 @@ class Bezier {
 };
 
 }// namespace math
-}// namespace planning
-}// namespace holo
 
 #endif
